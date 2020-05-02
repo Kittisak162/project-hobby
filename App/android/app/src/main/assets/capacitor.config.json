@@ -1,0 +1,8 @@
+{
+  "appId": "com.project.easyapp",
+  "appName": "Easy App",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "dist",
+  "cordova": {}
+}
