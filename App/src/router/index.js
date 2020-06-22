@@ -6,7 +6,6 @@ Vue.use(IonicVueRouter)
 const routes = [
   {
     path: '/',
-    name: 'Home',
     component: () => import('@/layouts/Home.vue'),
     children: [
       {
@@ -22,6 +21,17 @@ const routes = [
         path: 'register',
         name: 'Register',
         component: () => import('@/views/Register.vue')
+      }
+    ]
+  },
+  {
+    path: '/',
+    component: () => import('@/layouts/Auth.vue'),
+    children: [
+      {
+        path: 'home',
+        name: 'Home',
+        component: () => import('@/views/Home.vue')
       }
     ]
   }

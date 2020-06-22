@@ -6,7 +6,7 @@
         </div>
       </ion-toolbar>
       <ion-toolbar>
-     <ion-segment :value="$route.name" @ionChange="changeContent">
+     <ion-segment :value="$route.name" @ionChange="$router.replace({ name: $event.detail.value })">
       <ion-segment-button value="Login">
         <ion-label>{{ $t('login') }}</ion-label>
       </ion-segment-button>
@@ -21,13 +21,3 @@
     </ion-content>
   </ion-page>
 </template>
-
-<script>
-export default {
-  methods: {
-    changeContent(event) {
-      this.$router.replace({ name: event.detail.value })
-    }
-  }
-}
-</script>

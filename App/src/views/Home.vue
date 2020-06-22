@@ -1,19 +1,7 @@
 <template>
   <ion-page>
-    <div style="height: 100px;background-color: blue">
-    </div>
     <ion-content>
-      <ion-segment value="login">
-        <ion-segment-button value="login">
-          <ion-label>{{ $t('login') }}</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="register">
-          <ion-label>{{ $t('register') }}</ion-label>
-        </ion-segment-button>
-      </ion-segment>
-
-        fasfda
-
+      Home
     </ion-content>
   </ion-page>
 </template>
