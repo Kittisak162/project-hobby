@@ -11,6 +11,9 @@
           <ion-label>{{ $t('register') }}</ion-label>
         </ion-segment-button>
       </ion-segment>
+
+        fasfda
+
     </ion-content>
   </ion-page>
 </template>

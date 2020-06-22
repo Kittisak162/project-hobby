@@ -1,5 +1,10 @@
 {
   "lang": "en",
   "login": "Login",
-  "register": "Register"
+  "login_with": "Login with {provider}",
+  "register": "Register",
+  "register_with": "Register with {provider}",
+  "email": "Email",
+  "password": "Password",
+  "password_confirmation": "Password confirmation"
 }

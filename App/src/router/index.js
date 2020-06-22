@@ -7,7 +7,23 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: () => import('@/views/Home.vue')
+    component: () => import('@/layouts/Home.vue'),
+    children: [
+      {
+        path: '',
+        redirect: { name: 'Login' }
+      },
+      {
+        path: 'login',
+        name: 'Login',
+        component: () => import('@/views/Login.vue')
+      },
+      {
+        path: 'register',
+        name: 'Register',
+        component: () => import('@/views/Register.vue')
+      }
+    ]
   }
 ];
 

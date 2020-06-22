@@ -1,5 +1,10 @@
 {
   "lang": "th",
   "login": "เข้าสู่ระบบ",
-  "register": "ลงทะเบียน"
+  "login_with": "เข้าสู่ระบบด้วย {provider}",
+  "register": "ลงทะเบียน",
+  "register_with": "ลงทะเบียนด้วย {provider}",
+  "email": "อีเมล",
+  "password": "รหัสผ่าน",
+  "password_confirmation": "รหัสผ่านอีกครั้ง"
 }
