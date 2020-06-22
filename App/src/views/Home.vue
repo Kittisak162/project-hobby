@@ -1,30 +1,16 @@
 <template>
   <ion-page>
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>Hello World</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content class="ion-padding">
-      <ion-list lines="none">
-        <ion-item>
-          <ion-label>Country</ion-label>
-          <ion-select class="text-secondary" v-model="confirmData.code">
-            <ion-select-option v-for="country in countries" :key="country.code" v-model="country.dial_code">
-              {{ country.dial_code }} {{ country.name }}
-            </ion-select-option>
-          </ion-select>
-        </ion-item>
-
-        <ion-item>
-          <ion-input type="number" placeholder="Enter Phone Number"></ion-input>
-        </ion-item>
-
-      </ion-list>
-
-      <ion-button mode="ios" color="primary" expand="block">
-        Confirm
-      </ion-button>
+    <div style="height: 100px;background-color: blue">
+    </div>
+    <ion-content>
+      <ion-segment value="login">
+        <ion-segment-button value="login">
+          <ion-label>{{ $t('login') }}</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="register">
+          <ion-label>{{ $t('register') }}</ion-label>
+        </ion-segment-button>
+      </ion-segment>
     </ion-content>
   </ion-page>
 </template>
