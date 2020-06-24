@@ -9,10 +9,13 @@
   "password_confirmation": "Password confirmation",
 
   "validations": {
-    "messages": {},
+    "messages": {
+      "regex_password": "The {_field_} must contain at least one uppercase, one lowercase and one number"
+    },
     "fields": {
       "email": "email",
-      "password": "password"
+      "password": "password",
+      "password_confirmation": "password confirmation"
     }
   }
 }

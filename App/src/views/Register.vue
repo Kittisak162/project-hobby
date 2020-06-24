@@ -2,20 +2,27 @@
   <ion-page>
     <ion-content>
       <form>
-        <ion-list lines="full" class="ion-no-margin ion-no-padding">
+        <validation-provider name="email" rules="required|email" v-slot="{ errors }">
           <ion-item>
             <ion-label position="stacked">{{ $t('email') }}<ion-text color="danger">*</ion-text></ion-label>
-            <ion-input required type="email"></ion-input>
+            <ion-input-vue v-model="registerData.email" type="email"></ion-input-vue>
           </ion-item>
+          <ion-label>{{ 'error: ' + errors }}</ion-label>
+        </validation-provider>
+        <validation-provider vid="password" name="password" rules="required|min:8|regex_password:^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$" v-slot="{ errors }">
           <ion-item>
             <ion-label position="stacked">{{ $t('password') }}<ion-text color="danger">*</ion-text></ion-label>
-            <ion-input required type="password"></ion-input>
+            <ion-input-vue v-model="registerData.password" type="password"></ion-input-vue>
           </ion-item>
+          <ion-label>{{ 'error: ' + errors }}</ion-label>
+        </validation-provider>
+        <validation-provider name="password_confirmation" rules="required|confirmed:password" v-slot="{ errors }">
           <ion-item>
             <ion-label position="stacked">{{ $t('password_confirmation') }}<ion-text color="danger">*</ion-text></ion-label>
-            <ion-input required type="password"></ion-input>
+            <ion-input-vue v-model="registerData.passwordConfirmation" type="password"></ion-input-vue>
           </ion-item>
-        </ion-list>
+          <ion-label>{{ 'error: ' + errors }}</ion-label>
+        </validation-provider>
         <div class="ion-padding">
           <ion-button expand="block" type="submit" class="ion-margin-bott">{{ $t('register') }}</ion-button>
           <ion-button expand="block" class="ion-margin-bott">{{ $t('register_with', { provider: 'Facebook' }) }}</ion-button>
@@ -25,3 +32,17 @@
     </ion-content>
   </ion-page>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      registerData: {
+        email: null,
+        password: null,
+        password_confirmation: null
+      }
+    }
+  },
+}
+</script>

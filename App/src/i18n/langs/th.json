@@ -9,10 +9,13 @@
   "password_confirmation": "รหัสผ่านอีกครั้ง",
 
   "validations": {
-    "messages": {},
+    "messages": {
+      "regex_password": "{_field_} ต้องประกอบไปด้วยตัวพิมพ์เล็ก ตัวพิมพ์ใหญ่ และตัวเลข"
+    },
     "fields": {
       "email": "อีเมล",
-      "password": "รหัสผ่าน"
+      "password": "รหัสผ่าน",
+      "password_confirmation": "รหัสผ่านอีกครั้ง"
     }
   }
 }
