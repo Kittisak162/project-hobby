@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     'api',
 ]
 
+AUTH_USER_MODEL = 'api.User'
+
 SITE_ID = 1
 
 MIDDLEWARE = [
