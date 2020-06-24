@@ -7,6 +7,7 @@ import i18n from './i18n';
 
 import App from './App.vue';
 
+import './vee-validate';
 import './registerServiceWorker';
 import './app.scss';
 

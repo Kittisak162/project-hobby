@@ -6,5 +6,13 @@
   "register_with": "ลงทะเบียนด้วย {provider}",
   "email": "อีเมล",
   "password": "รหัสผ่าน",
-  "password_confirmation": "รหัสผ่านอีกครั้ง"
+  "password_confirmation": "รหัสผ่านอีกครั้ง",
+
+  "validations": {
+    "messages": {},
+    "fields": {
+      "email": "อีเมล",
+      "password": "รหัสผ่าน"
+    }
+  }
 }
