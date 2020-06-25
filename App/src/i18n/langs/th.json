@@ -4,6 +4,7 @@
   "login_with": "เข้าสู่ระบบด้วย {provider}",
   "register": "ลงทะเบียน",
   "register_with": "ลงทะเบียนด้วย {provider}",
+  "logout": "ออกจากระบบ",
   "name": "ชื่อ",
   "email": "อีเมล",
   "password": "รหัสผ่าน",

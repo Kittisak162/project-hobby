@@ -47,31 +47,30 @@ const router = new IonicVueRouter({
   routes
 });
 
-router.beforeEach((to, from, next) => {
-  const requiresAuth = to.matched.some(item => item.meta.requiresAuth);
-  if (!from.name) {
-    Storage.get({ key: 'TOKEN' })
-      .then(({ value }) => {
-        const token = value;
-        store.dispatch('getCurrentUser', token);
-        if (requiresAuth && !token)
-          next('/login');
-        else if (!requiresAuth && !!token)
-          next('/home');
-        else
-          next();
-      })
-      .catch(error => {
-        console.error(error);
-      })
-  } else {
-    const isAuthenticated = store.getters.isAuthenticated;
-    if (requiresAuth && !isAuthenticated)
-      next('/login');
-    else if (!requiresAuth && isAuthenticated)
-      next('/home');
-    else
-      next();
+router.beforeEach(async (to, from, next) => {
+  try {
+    const requiresAuth = to.matched.some(item => item.meta.requiresAuth);
+    if (!from.name) {
+      const { value } = await Storage.get({ key: 'TOKEN' });
+      const token = value;
+      store.dispatch('getCurrentUser', token);
+      if (requiresAuth && !token)
+        next('/login');
+      else if (!requiresAuth && !!token)
+        next('/home');
+      else
+        next();
+    } else {
+      const isAuthenticated = store.getters.isAuthenticated;
+      if (requiresAuth && !isAuthenticated)
+        next('/login');
+      else if (!requiresAuth && isAuthenticated)
+        next('/home');
+      else
+        next();
+    }
+  } catch (error) {
+    console.error(error);
   }
 });
 

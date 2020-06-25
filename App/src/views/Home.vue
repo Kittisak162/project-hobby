@@ -1,25 +1,17 @@
 <template>
   <ion-page>
     <ion-content>
-      Home
+      <ion-button expand="block" @click="logout()">{{ $t('logout') }}</ion-button>
     </ion-content>
   </ion-page>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 export default {
   name: "Home",
-  data() {
-    return {
-      countries: [
-        {
-          "name": "United States",
-          "dial_code": "+1",
-          "code": "US"
-        }
-      ],
-      confirmData: { code: '+1' }
-    }
+  methods: {
+    ...mapActions(['logout'])
   },
 };
 </script>

@@ -13,50 +13,52 @@ const mutations = {
 }
 
 const actions = {
-  register({ dispatch }, payload) {
-    const registerData = {
-      name: payload.name,
-      email: payload.email,
-      password1: payload.password,
-      password2: payload.passwordConfirmation
+  async register({ commit }, payload) {
+    try {
+      const registerData = {
+        name: payload.name,
+        email: payload.email,
+        password1: payload.password,
+        password2: payload.passwordConfirmation
+      }
+      const registerResponse = await authService.register(registerData)
+      const token = registerResponse.data.key;
+      await Storage.set({ key: 'TOKEN', value: token });
+      const userResponse = await authService.getCurrentUser(token);
+      const user = userResponse.data;
+      commit('setUser', user);
+      router.push({ name: 'Home' });
+    } catch (error) {
+      console.error(error);
     }
-    authService.register(registerData)
-      .then(async response => {
-        const token = response.data.key;
-        await Storage.set({ key: 'TOKEN', value: token });
-        await dispatch('getCurrentUser', token);
-        router.push({ name: 'Home' });
-      })
-      .catch(error => {
-        console.error(error.response);
-      })
   },
-  login({ dispatch }, payload) {
-    const loginData = {
-      email: payload.email,
-      password: payload.password
+  async login({ commit }, payload) {
+    try {
+      const loginData = {
+        email: payload.email,
+        password: payload.password
+      }
+      const loginResponse = await authService.login(loginData);
+      const token = loginResponse.data.key;
+      await Storage.set({ key: 'TOKEN', value: token });
+      const userResponse = await authService.getCurrentUser(token);
+      const user = userResponse.data;
+      commit('setUser', user);
+      router.push({ name: 'Home' });
+    } catch (error) {
+      console.error(error);
     }
-    authService.login(loginData)
-      .then(async response => {
-        const token = response.data.key;
-        await Storage.set({ key: 'TOKEN', value: token });
-        await dispatch('getCurrentUser', token);
-        router.push({ name: 'Home' });
-      })
-      .catch(error => {
-        console.error(error.response);
-      })
   },
-  getCurrentUser({commit}, payload) {
+  async getCurrentUser({commit}, payload) {
     const token = payload;
-    authService.getCurrentUser(token)
-      .then(response => {
-        const user = response.data;
-        commit('setUser', user);
-      })
-      .catch(error => {
-        console.error(error.response)
-      })
+    const userResponse = await authService.getCurrentUser(token)
+    const user = userResponse.data;
+    commit('setUser', user);
+  },
+  logout({commit}) {
+    commit('setUser', null);
+    Storage.remove({ key: 'TOKEN' });
+    router.push({ name: 'Login' });
   }
 }
 
