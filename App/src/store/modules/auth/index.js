@@ -1,9 +1,9 @@
-import axios from 'axios';
-import router from '@/router'
-import { authUrls } from '@/config';
+import { Storage } from '@capacitor/core';
+import router from '@/router';
+import authService from '@/services/auth';
 
 const state = {
-  user: {}
+  user: null
 }
 
 const mutations = {
@@ -13,41 +13,59 @@ const mutations = {
 }
 
 const actions = {
-  register({commit}, payload) {
+  register({ dispatch }, payload) {
     const registerData = {
       name: payload.name,
       email: payload.email,
       password1: payload.password,
       password2: payload.passwordConfirmation
     }
-    axios.post(authUrls.register, registerData)
-      .then(() => {
-        commit('setUser', null);
+    authService.register(registerData)
+      .then(async response => {
+        const token = response.data.key;
+        await Storage.set({ key: 'TOKEN', value: token });
+        await dispatch('getCurrentUser', token);
         router.push({ name: 'Home' });
       })
       .catch(error => {
         console.error(error.response);
       })
   },
-  login({commit}, payload) {
+  login({ dispatch }, payload) {
     const loginData = {
       email: payload.email,
       password: payload.password
     }
-    axios.post(authUrls.login, loginData)
-      .then(() => {
-        commit('setUser', null);
+    authService.login(loginData)
+      .then(async response => {
+        const token = response.data.key;
+        await Storage.set({ key: 'TOKEN', value: token });
+        await dispatch('getCurrentUser', token);
         router.push({ name: 'Home' });
       })
       .catch(error => {
         console.error(error.response);
       })
+  },
+  getCurrentUser({commit}, payload) {
+    const token = payload;
+    authService.getCurrentUser(token)
+      .then(response => {
+        const user = response.data;
+        commit('setUser', user);
+      })
+      .catch(error => {
+        console.error(error.response)
+      })
   }
 }
 
 const getters = {
-  getUser(state) {
+  userInfo(state) {
     return state.user;
+  },
+  isAuthenticated(state) {
+    return !!state.user;
   }
 }
 

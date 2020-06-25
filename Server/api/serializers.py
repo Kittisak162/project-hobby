@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from rest_auth.registration.serializers import RegisterSerializer
-from rest_auth.serializers import LoginSerializer
+from rest_auth.serializers import LoginSerializer, UserDetailsSerializer
+from api.models import User
 
 class CustomRegisterSerializer(RegisterSerializer):
   username = None
@@ -15,3 +16,9 @@ class CustomRegisterSerializer(RegisterSerializer):
 
 class CustomLoginSerializer(LoginSerializer):
   username = None
+
+class CustomUserDetailsSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = User
+    fields = ('pk', 'name', 'email', )
+    read_only_fields = ('email', )

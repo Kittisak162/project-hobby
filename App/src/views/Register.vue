@@ -45,6 +45,7 @@
 <script>
 import { mapActions } from 'vuex';
 export default {
+  name: 'Register',
   data() {
     return {
       registerData: {

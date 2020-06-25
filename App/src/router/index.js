@@ -1,5 +1,8 @@
 import Vue from 'vue';
 import { IonicVueRouter } from '@ionic/vue';
+import { Storage } from '@capacitor/core';
+
+import store from '@/store';
 
 Vue.use(IonicVueRouter)
 
@@ -27,6 +30,7 @@ const routes = [
   {
     path: '/',
     component: () => import('@/layouts/Auth.vue'),
+    meta: { requiresAuth: true },
     children: [
       {
         path: 'home',
@@ -41,6 +45,34 @@ const router = new IonicVueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+});
+
+router.beforeEach((to, from, next) => {
+  const requiresAuth = to.matched.some(item => item.meta.requiresAuth);
+  if (!from.name) {
+    Storage.get({ key: 'TOKEN' })
+      .then(({ value }) => {
+        const token = value;
+        store.dispatch('getCurrentUser', token);
+        if (requiresAuth && !token)
+          next('/login');
+        else if (!requiresAuth && !!token)
+          next('/home');
+        else
+          next();
+      })
+      .catch(error => {
+        console.error(error);
+      })
+  } else {
+    const isAuthenticated = store.getters.isAuthenticated;
+    if (requiresAuth && !isAuthenticated)
+      next('/login');
+    else if (!requiresAuth && isAuthenticated)
+      next('/home');
+    else
+      next();
+  }
 });
 
 export default router;

@@ -154,6 +154,7 @@ REST_AUTH_REGISTER_SERIALIZERS = {
 
 REST_AUTH_SERIALIZERS = {
     'LOGIN_SERIALIZER': 'api.serializers.CustomLoginSerializer',
+    'USER_DETAILS_SERIALIZER': 'api.serializers.CustomUserDetailsSerializer',
 }
 
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
