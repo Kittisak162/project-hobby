@@ -3,6 +3,13 @@
     <ion-content>
       <validation-observer v-slot="{ handleSubmit }">
         <form @submit.prevent="handleSubmit(onSubmitRegister)">
+          <validation-provider name="name" rules="required" v-slot="{ errors }">
+            <ion-item>
+              <ion-label position="stacked">{{ $t('name') }}<ion-text color="danger">*</ion-text></ion-label>
+              <ion-input-vue v-model="registerData.name"></ion-input-vue>
+            </ion-item>
+            <ion-label>{{ errors }}</ion-label>
+          </validation-provider>
           <validation-provider name="email" rules="required|email" v-slot="{ errors }">
             <ion-item>
               <ion-label position="stacked">{{ $t('email') }}<ion-text color="danger">*</ion-text></ion-label>
@@ -41,6 +48,7 @@ export default {
   data() {
     return {
       registerData: {
+        name: null,
         email: null,
         password: null,
         passwordConfirmation: null

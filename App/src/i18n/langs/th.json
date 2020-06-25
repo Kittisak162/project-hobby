@@ -4,6 +4,7 @@
   "login_with": "เข้าสู่ระบบด้วย {provider}",
   "register": "ลงทะเบียน",
   "register_with": "ลงทะเบียนด้วย {provider}",
+  "name": "ชื่อ",
   "email": "อีเมล",
   "password": "รหัสผ่าน",
   "password_confirmation": "รหัสผ่านอีกครั้ง",
@@ -13,6 +14,7 @@
       "regex_password": "{_field_} ต้องประกอบไปด้วยตัวพิมพ์เล็ก ตัวพิมพ์ใหญ่ และตัวเลข"
     },
     "fields": {
+      "name": "ชื่อ",
       "email": "อีเมล",
       "password": "รหัสผ่าน",
       "password_confirmation": "รหัสผ่านอีกครั้ง"

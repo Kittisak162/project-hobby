@@ -15,6 +15,7 @@ const mutations = {
 const actions = {
   register({commit}, payload) {
     const registerData = {
+      name: payload.name,
       email: payload.email,
       password1: payload.password,
       password2: payload.passwordConfirmation
