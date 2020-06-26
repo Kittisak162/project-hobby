@@ -1,4 +1,4 @@
-const rootUrl = 'http://localhost:8000';
+const rootUrl = 'http://192.168.43.115:8000';
 
 const authUrls = {
   register: `${rootUrl}/api/v1/auth/registration/`,
