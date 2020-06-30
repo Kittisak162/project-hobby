@@ -38,20 +38,30 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+
+    # rest_framework
     'rest_framework',
     'rest_framework.authtoken',
+
+    # rest_auth
     'rest_auth',
     'rest_auth.registration',
+
+    # allauth
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+
+    # providers
     'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.google',
+
+    # cors
     'corsheaders',
+
+    # local
     'api',
 ]
-
-SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -138,15 +148,18 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
 
+SITE_ID = 1
+
 AUTH_USER_MODEL = 'api.User'
 
 ACCOUNT_ADAPTER = 'api.adapters.CustomAccountAdapter'
+
+SOCIALACCOUNT_ADAPTER = 'api.adapters.CustomSocialAccountAdapter'
 
 REST_AUTH_REGISTER_SERIALIZERS = {
     'REGISTER_SERIALIZER': 'api.serializers.CustomRegisterSerializer',
@@ -163,7 +176,8 @@ ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
-CORS_ORIGIN_REGEX_WHITELIST = (
-    r'^(https?://)?localhost',
-    r'^(https?://)?127.',
-)
+CORS_ORIGIN_ALLOW_ALL=True
+
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:8080',
+]

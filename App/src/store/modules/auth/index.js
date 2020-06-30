@@ -1,4 +1,5 @@
-import { Storage } from '@capacitor/core';
+import {  Plugins, Storage } from '@capacitor/core';
+// import { FacebookLoginResponse } from '@rdlabo/capacitor-facebook-login';
 import router from '@/router';
 import authService from '@/services/auth';
 
@@ -47,6 +48,23 @@ const actions = {
       router.push({ name: 'Home' });
     } catch (error) {
       console.error(error);
+    }
+  },
+  async loginFacebook({commit}) {
+    try {
+      const { FacebookLogin } = Plugins;
+      const result = await FacebookLogin.login({ permissions: ['email', 'public_profile'] });
+      if (result.accessToken) {
+        console.log(result.accessToken.token)
+        const accessToken = result.accessToken.token;
+        const response = await authService.facebookOauth(accessToken);
+        console.log(response.data)
+      } else {
+        console.log('error');
+      }
+      commit('setUser', null);
+    } catch (error) {
+      console.error(error.response);
     }
   },
   async getCurrentUser({commit}, payload) {

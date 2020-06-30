@@ -11,6 +11,11 @@ const login = loginData => {
   return axios.post(authUrls.login, body);
 }
 
+const facebookOauth = accessToken => {
+  const body = { access_token: accessToken };
+  return axios.post(authUrls.facebookOauth, body);
+}
+
 const getCurrentUser = token => {
   const configRequest = {
     headers: {
@@ -23,5 +28,6 @@ const getCurrentUser = token => {
 export default {
   register,
   login,
+  facebookOauth,
   getCurrentUser
 }

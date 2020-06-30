@@ -1,5 +1,7 @@
 import Vue from 'vue';
 import Ionic from '@ionic/vue';
+import { registerWebPlugin } from '@capacitor/core';
+import { FacebookLogin } from '@rdlabo/capacitor-facebook-login';
 
 import router from '@/router';
 import store from '@/store';
@@ -14,6 +16,8 @@ import '@/app.scss';
 Vue.config.productionTip = false;
 
 Vue.use(Ionic);
+
+registerWebPlugin(FacebookLogin);
 
 new Vue({
   router,

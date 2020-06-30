@@ -16,6 +16,7 @@
     "@capacitor/ios": "^2.2.0",
     "@ionic/core": "^5.2.2",
     "@ionic/vue": "0.0.9",
+    "@rdlabo/capacitor-facebook-login": "^2.0.3",
     "axios": "^0.19.2",
     "core-js": "^3.6.4",
     "ionicons": "^5.1.2",

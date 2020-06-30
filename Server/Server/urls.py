@@ -6,5 +6,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/v1/auth/', include('rest_auth.urls')),
     url(r'^api/v1/auth/registration/', include('rest_auth.registration.urls')),
+    url(r'^api/v1/auth/accounts/', include('allauth.urls')),
+    url(r'^api/v1/auth/social/', include('api.urls')),
     # url(r'^api/v1/', include('api.urls')),
 ]
