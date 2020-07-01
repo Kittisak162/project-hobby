@@ -16,6 +16,11 @@ const facebookOauth = accessToken => {
   return axios.post(authUrls.facebookOauth, body);
 }
 
+const googleOauth = accessToken => {
+  const body = { access_token: accessToken };
+  return axios.post(authUrls.googleOauth, body);
+}
+
 const getCurrentUser = token => {
   const configRequest = {
     headers: {
@@ -29,5 +34,6 @@ export default {
   register,
   login,
   facebookOauth,
+  googleOauth,
   getCurrentUser
 }

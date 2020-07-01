@@ -1,5 +1,4 @@
 import {  Plugins, Storage } from '@capacitor/core';
-// import { FacebookLoginResponse } from '@rdlabo/capacitor-facebook-login';
 import router from '@/router';
 import authService from '@/services/auth';
 
@@ -65,6 +64,18 @@ const actions = {
       commit('setUser', null);
     } catch (error) {
       console.error(error.response);
+    }
+  },
+  async loginGoogle({commit}) {
+    try {
+      const { GoogleAuth } = Plugins;
+      const result = await GoogleAuth.signIn();
+      const accessToken = result.authentication.accessToken;
+      const response = await authService.googleOauth(accessToken);
+      console.log(response.data)
+      commit('setUser', null);
+    } catch (error) {
+      console.error(error);
     }
   },
   async getCurrentUser({commit}, payload) {

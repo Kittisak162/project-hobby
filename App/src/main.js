@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Ionic from '@ionic/vue';
 import { registerWebPlugin } from '@capacitor/core';
 import { FacebookLogin } from '@rdlabo/capacitor-facebook-login';
+import '@codetrix-studio/capacitor-google-auth';
 
 import router from '@/router';
 import store from '@/store';

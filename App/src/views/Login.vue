@@ -20,7 +20,7 @@
           <div class="ion-padding">
             <ion-button expand="block" type="submit" class="ion-margin-bott">{{ $t('login') }}</ion-button>
             <ion-button expand="block" class="ion-margin-bott" @click="loginFacebook()">{{ $t('login_with', { provider: 'Facebook' }) }}</ion-button>
-            <ion-button expand="block" class="ion-margin-bott">{{ $t('login_with', { provider: 'Google' }) }}</ion-button>
+            <ion-button expand="block" class="ion-margin-bott" @click="loginGoogle()">{{ $t('login_with', { provider: 'Google' }) }}</ion-button>
           </div>
         </form>
       </validation-observer>
@@ -41,7 +41,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['login', 'loginFacebook']),
+    ...mapActions(['login', 'loginFacebook', 'loginGoogle']),
     onSubmitLogin() {
       this.login(this.loginData);
     }
