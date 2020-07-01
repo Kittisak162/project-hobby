@@ -61,6 +61,7 @@ INSTALLED_APPS = [
 
     # local
     'restauth',
+    'restapi',
 ]
 
 MIDDLEWARE = [
