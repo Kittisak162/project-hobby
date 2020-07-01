@@ -71,6 +71,7 @@ const actions = {
       const { GoogleAuth } = Plugins;
       const result = await GoogleAuth.signIn();
       const accessToken = result.authentication.accessToken;
+      console.log(accessToken)
       const response = await authService.googleOauth(accessToken);
       console.log(response.data)
       commit('setUser', null);

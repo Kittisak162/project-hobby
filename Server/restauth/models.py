@@ -32,6 +32,15 @@ class User(AbstractBaseUser):
     max_length=255,
     unique=True,
   )
+  provider = models.CharField(
+    choices=(
+      ('email', 'Email'),
+      ('facebook', 'Facebook'),
+      ('google', 'Google'),
+    ),
+    max_length=10,
+    default='email'
+  )
   is_admin = models.BooleanField(default=False)
   objects = UserManager()
   USERNAME_FIELD = 'email'

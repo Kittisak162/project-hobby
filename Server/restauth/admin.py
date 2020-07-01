@@ -4,7 +4,7 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 
-from api.models import User
+from restauth.models import User
 
 
 class UserCreationForm(forms.ModelForm):
@@ -43,11 +43,11 @@ class UserChangeForm(forms.ModelForm):
 class UserAdmin(BaseUserAdmin):
   form = UserChangeForm
   add_form = UserCreationForm
-  list_display = ('name', 'email', 'is_admin')
+  list_display = ('name', 'email', 'provider', 'is_admin')
   list_filter = ('is_admin',)
   fieldsets = (
     (None, {'fields': ('email', 'password')}),
-    ('Personal info', {'fields': ('name',)}),
+    ('Personal info', {'fields': ('name', 'provider')}),
     ('Permissions', {'fields': ('is_admin',)}),
   )
   add_fieldsets = (

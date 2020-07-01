@@ -29,6 +29,8 @@ class CustomSocialAccountAdapter(DefaultSocialAccountAdapter):
     user_email(user, valid_email_or_none(email) or '')
     if name:
       user_field(user, 'name', name)
+      user_field(user, 'provider', 'facebook')
     else:
       user_field(user, 'name', first_name + ' ' + last_name)
+      user_field(user, 'provider', 'google')
     return user

@@ -60,7 +60,7 @@ INSTALLED_APPS = [
     'corsheaders',
 
     # local
-    'api',
+    'restauth',
 ]
 
 MIDDLEWARE = [
@@ -155,19 +155,19 @@ STATIC_URL = '/static/'
 
 SITE_ID = 1
 
-AUTH_USER_MODEL = 'api.User'
+AUTH_USER_MODEL = 'restauth.User'
 
-ACCOUNT_ADAPTER = 'api.adapters.CustomAccountAdapter'
+ACCOUNT_ADAPTER = 'restauth.adapters.CustomAccountAdapter'
 
-SOCIALACCOUNT_ADAPTER = 'api.adapters.CustomSocialAccountAdapter'
+SOCIALACCOUNT_ADAPTER = 'restauth.adapters.CustomSocialAccountAdapter'
 
 REST_AUTH_REGISTER_SERIALIZERS = {
-    'REGISTER_SERIALIZER': 'api.serializers.CustomRegisterSerializer',
+    'REGISTER_SERIALIZER': 'restauth.serializers.CustomRegisterSerializer',
 }
 
 REST_AUTH_SERIALIZERS = {
-    'LOGIN_SERIALIZER': 'api.serializers.CustomLoginSerializer',
-    'USER_DETAILS_SERIALIZER': 'api.serializers.CustomUserDetailsSerializer',
+    'LOGIN_SERIALIZER': 'restauth.serializers.CustomLoginSerializer',
+    'USER_DETAILS_SERIALIZER': 'restauth.serializers.CustomUserDetailsSerializer',
 }
 
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
@@ -175,6 +175,8 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
+
+SOCIALACCOUNT_EMAIL_REQUIRED = False
 
 CORS_ORIGIN_ALLOW_ALL=True
 

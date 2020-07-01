@@ -1,11 +1,11 @@
 const rootUrl = 'http://localhost:8000';
 
 const authUrls = {
-  register: `${rootUrl}/api/v1/auth/registration/`,
-  login: `${rootUrl}/api/v1/auth/login/`,
-  facebookOauth: `${rootUrl}/api/v1/auth/social/facebook`,
-  googleOauth: `${rootUrl}/api/v1/auth/social/google`,
-  userInfo: `${rootUrl}/api/v1/auth/user/`,
+  register: `${rootUrl}/rest_auth/v1/registration/`,
+  login: `${rootUrl}/rest_auth/v1/login/`,
+  facebookOauth: `${rootUrl}/rest_auth/v1/social/facebook`,
+  googleOauth: `${rootUrl}/rest_auth/v1/social/google`,
+  userInfo: `${rootUrl}/rest_auth/v1/user/`,
 }
 
 const apiUrls = {}
