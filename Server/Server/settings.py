@@ -52,16 +52,16 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
 
-    # providers
-    'allauth.socialaccount.providers.facebook',
-    'allauth.socialaccount.providers.google',
-
     # cors
     'corsheaders',
 
     # local
     'restauth',
     'restapi',
+
+    # local providers
+    'restauth.providers.facebook',
+    'restauth.providers.google',
 ]
 
 MIDDLEWARE = [
